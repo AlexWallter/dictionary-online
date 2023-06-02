@@ -1,0 +1,256 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background-color: hsl(0, 0%, 100%);
+    --gray-color: hsl(0, 0%, 90%);
+    --purpleish-color: hsl(288, 100%, 50%);
+    --font-color:  hsl(0 0% 15%);
+    --icon-color: auto;
+}
+
+.dark {
+    --background-color: hsl(0, 0%, 0%);
+    --font-color:  hsl(0 0% 100%);
+    --icon-color: hsl(0 0% 100%);
+}
+
+body {
+    font-family: 'Noto Serif', serif;
+    color: var(--font-color);
+    background-color: var(--background-color);
+}
+
+main {
+    padding: 1.5em;
+}
+
+#navBar {
+    width: 100%;
+    height: 15vh;
+    padding: 1.5em 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+#icon::before {
+    content:'\f02d';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 2.5rem;
+    margin-right: 1em;
+    color: var(--icon-color);
+}
+
+#icon2 {
+    width: fit-content;
+    height: fit-content;
+}
+
+#icon2::before {
+    content: '\f186';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 2rem;
+    margin-right: 1em;
+    position: relative;
+    right: -1em;
+    color: var(--icon-color);
+    cursor: pointer;
+}
+
+.dark #icon2::before {
+    content: '\f185';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 2rem;
+    margin-right: 1em;
+    position: relative;
+    right: -1em;
+    color: var(--icon-color);
+    cursor: pointer;
+}
+
+#inputContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+#addInput {
+    flex: 1;
+    height: 2.8rem;
+    border-radius: 1rem;
+    background-color: var(--gray-color);
+    border: none;
+    margin-bottom: 2em;
+    padding: 0.5em 1em;
+}
+
+#btn::before {
+    content:'\f002';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 2rem;
+    position: absolute;
+    right: 0.5em;
+    top: 0.15em;
+    color: var(--purpleish-color);
+    cursor: pointer;
+}
+
+#current-word p {
+    color: var(--purpleish-color);
+    font-size: 1.5rem;
+    padding: 0.5em;
+}
+
+#current-word {
+    position: relative;
+}
+
+.audioBtn {
+    border: none;
+    background-color: transparent;
+}
+
+.audioBtn::after {
+    content:'\f04b';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 2rem;
+    color: var(--purpleish-color);
+    cursor: pointer;
+    position: absolute;
+    right: 1em;
+    top: -0.1em;
+    width: 2em;
+    height: 2em;
+    background-color: hsl(288, 100%, 80%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grammar {
+    margin: 1.8em 0;
+    border-top: dotted 0.1em gray;
+}
+
+.meaning {
+    color: hsl(0 0% 40%);
+}
+
+ul {
+    padding: 1em;
+    width: 39ch;
+}
+
+li {
+    margin: 0.7em 0;
+}
+
+li::marker {
+    color: var(--purpleish-color);
+}
+
+.sym {
+    display: flex;
+}
+
+.sym p {
+    margin-right: 2em;
+}
+
+.synomym {
+    color: var(--purpleish-color);
+}
+
+#src {
+    display: flex;
+    padding: 0.7em 0;
+    margin-top: 2em;
+}
+
+#src p {
+    margin-right: 1em;
+    font-size: 1rem;
+    display: flex;
+}
+
+a{
+    color: var(--font-color);
+    font-size: 0.8rem;
+    display: block;
+}
+
+a::after{
+    content: '\f08e';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 1rem;
+    position: relative;
+    right: -1em;
+    color: var(--icon-color);
+    cursor: pointer;
+}
+
+@media all and (min-width: 739px) {
+    ul {
+        width: 64ch;
+    }
+
+    body {
+        font-size: 1.3rem;
+    }
+
+    #navBar {
+        padding: 0;
+        height: 8vh;
+    }
+    a {
+        font-size: 1rem;
+    }
+}
+
+@media all and (min-width: 1100px) {
+    main {
+        padding: 10% 20%;
+    }
+
+    ul {
+        width: 73ch;
+    }
+
+    #navBar {
+        margin-bottom: 2em;
+    }
+}
