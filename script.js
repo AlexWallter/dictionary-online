@@ -85,76 +85,100 @@ async function dict(element) {
         console.error(err)
     }
 
-    if(data[0].meanings[0].definitions !== undefined) {
-        nounParagraths.innerHTML = `<h3 class = "grammar">noun</h3> <p class = "meaning">Meaning</p>`;
-        const nounDefinitions = await data[0].meanings[0].definitions
-        let definition1 = document.createElement('ul')
-         for(let i = 0; i<nounDefinitions.length; i++) {
-            definition1.innerHTML += `<li>${nounDefinitions[i].definition}</li>`
-        }
-        nounParagraths.appendChild(definition1)
-        if(data[0].meanings[0].synonyms[0] !== undefined) {
-        synomys.innerHTML = `<p>synomys</p> <span class = "synomym">${data[0].meanings[0].synonyms[0]}</span>`
-
-        }
-        else {
-            synomys.innerHTML = ""
-        }
-    nounParagraths.appendChild(synomys)
-    } 
-    else {
-          nounParagraths.innerHTML = ""
-    }
-
-    if(data[0].meanings[1] !== undefined) {
-        verbParagraths.innerHTML = `<h3 class = "grammar">verb</h3> <p class = "meaning">Meaning</p>`;
-        const verbDefinitions = await data[0].meanings[1].definitions
-        let definition2 = document.createElement('ul')
-         for(let i = 0; i<verbDefinitions.length; i++) {
-            definition2.innerHTML += `<li>${verbDefinitions[i].definition}</li>`
-            
-        }
-        verbParagraths.appendChild(definition2)
-        if(data[0].meanings[1].synonyms[0] !== undefined) {
-            verbSyn.innerHTML = `<p>synomys</p> <span class = "synomym">${data[0].meanings[1].synonyms[0]}</span>`
-    
-        }
-        else {
-                verbSyn.innerHTML = ""
-        }
-        verbParagraths.appendChild(verbSyn)
-    } 
-    else {
-        verbParagraths.innerHTML = ""
-    }
-
-    if(data[0].meanings[2] !== undefined) {
-        adjcParagraphs.innerHTML = `<h3 class = "grammar">adjective</h3> <p class = "meaning">Meaning</p>`;
-        const adjeDefinitions = await data[0].meanings[2].definitions
-        let definition3 = document.createElement('ul')
-         for(let i = 0; i<adjeDefinitions.length; i++) {
-            definition3.innerHTML += `<li>${adjeDefinitions[i].definition}</li>`
-        }
-        adjcParagraphs.appendChild(definition3);
-        
-        if(data[0].meanings[2].synonyms[0] !== undefined) {
-            adjSyn.innerHTML = `<p>synomys</p> <span class = "synomym">${data[0].meanings[2].synonyms[0]}</span>`
-            adjcParagraphs.appendChild(adjSyn)
-            }else {
-                adjSyn.innerHTML = ""
-            }
-    } 
-    else {
-        adjcParagraphs.innerHTML = "" 
-    }
 
     try {
-        src.innerHTML = `<p>Source</p>`
-        const source = document.createElement('div')
-        source.innerHTML += `<a href = "${data[0].sourceUrls[0]}">${data[0].sourceUrls[0]}</a>`
-        src.appendChild(source)
-    } 
-    catch (err) {
+        if(data[0].meanings[0].definitions !== undefined) {
+            nounParagraths.innerHTML = `<h3 class = "grammar">noun</h3> <p class = "meaning">Meaning</p>`;
+            const nounDefinitions = await data[0].meanings[0].definitions
+            let definition1 = document.createElement('ul')
+             for(let i = 0; i<nounDefinitions.length; i++) {
+                definition1.innerHTML += `<li>${nounDefinitions[i].definition}</li>`
+            }
+            nounParagraths.appendChild(definition1)
+            if(data[0].meanings[0].synonyms[0] !== undefined) {
+            synomys.innerHTML = `<p>synomys</p> <span class = "synomym">${data[0].meanings[0].synonyms[0]}</span>`
+    
+            }
+            else {
+                synomys.innerHTML = ""
+            }
+            nounParagraths.appendChild(synomys)
+        } 
+        else {
+            nounParagraths.innerHTML = ""
+        }
+    }
+    catch(err) {
         console.error(err)
+    }
+
+
+    try {
+        if(data[0].meanings[1] !== undefined) {
+            verbParagraths.innerHTML = `<h3 class = "grammar">verb</h3> <p class = "meaning">Meaning</p>`;
+            const verbDefinitions = await data[0].meanings[1].definitions
+            let definition2 = document.createElement('ul')
+             for(let i = 0; i<verbDefinitions.length; i++) {
+                definition2.innerHTML += `<li>${verbDefinitions[i].definition}</li>`
+                
+            }
+            verbParagraths.appendChild(definition2)
+            if(data[0].meanings[1].synonyms[0] !== undefined) {
+                verbSyn.innerHTML = `<p>synomys</p> <span class = "synomym">${data[0].meanings[1].synonyms[0]}</span>`
+        
+            }
+            else {
+                verbSyn.innerHTML = ""
+            }
+            verbParagraths.appendChild(verbSyn)
+        } 
+        else {
+            verbParagraths.innerHTML = ""
+        }
+    }
+    catch(err) {
+        console.error(err)
+    }
+
+
+    try {
+        if(data[0].meanings[2] !== undefined) {
+            adjcParagraphs.innerHTML = `<h3 class = "grammar">adjective</h3> <p class = "meaning">Meaning</p>`;
+            const adjeDefinitions = await data[0].meanings[2].definitions
+            let definition3 = document.createElement('ul')
+             for(let i = 0; i<adjeDefinitions.length; i++) {
+                definition3.innerHTML += `<li>${adjeDefinitions[i].definition}</li>`
+            }
+            adjcParagraphs.appendChild(definition3);
+            
+            if(data[0].meanings[2].synonyms[0] !== undefined) {
+                adjSyn.innerHTML = `<p>synomys</p> <span class = "synomym">${data[0].meanings[2].synonyms[0]}</span>`
+                adjcParagraphs.appendChild(adjSyn)
+                }else {
+                    adjSyn.innerHTML = ""
+                }
+        } 
+        else {
+            adjcParagraphs.innerHTML = "" 
+        }
+    }
+    catch(err) {
+        console.error(err)
+    }
+
+    
+    if (adjcParagraphs.innerHTML == "" && verbParagraths.innerHTML == "" && nounParagraths.innerHTML == "") {
+        currWord.innerHTML = `sorry we did not find the meaning`
+    } 
+    else {
+        try {
+            src.innerHTML = `<p>Source</p>`
+            const source = document.createElement('div')
+            source.innerHTML += `<a href = "${data[0].sourceUrls[0]}">${data[0].sourceUrls[0]}</a>`
+            src.appendChild(source)
+        } 
+        catch (err) {
+            console.error(err)
+        }
     }
 };
